@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compress File</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Oswald:wght@500&display=swap" rel="stylesheet"> 
+        
+
+    <style>
+        *{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    background-color: black;
+    color: white;
+    
+}
+#container{
+       height: 80vh;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+}
+#inner-div{
+    text-align: center;
+}
+#inner-div #compress{
+    font-size: 44px;
+    margin: 13px;
+}
+#huffman{
+    font-size: 64px;
+    color: rgb(255 0 0);
+     margin: 10px;
+    margin-bottom: 29px;
+}
+h1{
+    font-family: 'oswald', cursive;
+}
+p{
+    font-size: 17px;
+    font-family: cursive;
+}
+
+.button{
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    margin: 12px;
+    font-weight: bold;
+    font-size: 18px;
+    transition: all 0.9s;
+}
+.button:hover{
+    cursor: pointer;
+    color:white;
+    
+    background-color: rgb(72, 61, 218);
+    transform: translateY(4px);
+}
+
+form {
+   text-align: center;
+    
+}
+form input{
+    display: block;
+    font-size: 21px;
+    padding: 17px;
+    margin: 27px 0px 15px 90px;
+}
+
+
+
+
+
+#success{
+    background-color: rgba(154, 238, 116, 0.541);
+    color: black;
+    text-align: center;
+}
+a{
+    text-decoration: none;
+}
+
+.container1{
+    text-align: center;
+}
+#mytext{
+    background-color: rgba(154, 238, 116, 0.541);
+}
+
+
+
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="inner-div">
+            <h1 id="huffman">DECOMPRESS YOUR FILE</h1>
+            <p>Select a huffman tree encoded binary file to decompress it ! </p>
+            <form action="/decompress" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" id="file">
+                <button type="submit" class="button">Upload</button>
+            </form>
+            <p>
+                Please wait after uploading so that your file gets decompressed.
+            </p>
+
+
+        </div>
+    </div>
+
+    <div class="container1">
+        <p id="success"></p>
+        <a href="/download" id="downloads" download><button id="dd" ></button></a>
+    </div>
+    
+
+    <div class="container1">
+        <div class="myalert">
+
+            <p id="mytext"></p>
+        </div>
+
+        <div class="myalert1">
+            <p id="mytext1"></p>
+        </div>
+
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#myalert').hide();
+    })
+
+    $(document).ready(function () {
+        $('#myalert1').hide();
+    })
+    if ("{{check}}" == 1) {
+        mytext.innerHTML = "<strong> &#10003; </strong> File uploaded and decompressed succesfully!";
+
+        $('#myalert').show();
+
+        setTimeout(function () {
+            $('#mytext').hide();
+        }, 4000);
+
+        success.innerHTML = "Download your decompressed file";
+            dd.setAttribute("class", "button");
+            dd.innerHTML = "Download";
+
+    }
+    elseif("{{check}}" == -1)
+    {
+        mytext1.innerHTML = "<strong> Sorry ! </strong> Error in uploading file.";
+        $('#myalert1').show();
+        setTimeout(function () {
+            $('#mytext1').hide();
+        }, 4000);
+
+    }
+</script>
+</html>
