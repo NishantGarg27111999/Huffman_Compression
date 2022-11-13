@@ -63,7 +63,7 @@ def compress():
             while True:
                 if 'uploads/{}-compressed.bin':
                     print("mein download k liye")
-                    os.system('mv uploads\{}-compressed.bin downloads'.format(filename))
+                    os.system('mv uploads/{}-compressed.bin downloads'.format(filename))
                     break
 
             return render_template("compress.html", check=1)
