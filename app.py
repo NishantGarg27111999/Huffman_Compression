@@ -54,7 +54,7 @@ def compress():
             print("two")
             up_file.save(os.path.join(app.config["FILE_UPLOADS"], filename))
             print("three")
-            os.system('c uploads/{}'.format(filename))
+            os.system('wine c uploads/{}'.format(filename))
             # print("mein chala")
             filename = filename[:filename.index(".",1)]
             print("five")
