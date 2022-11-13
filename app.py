@@ -46,12 +46,17 @@ def compress():
         if len(up_file.filename) > 0:
             global filename
             global ftype
+            print("before file")
             filename = up_file.filename
+            print("one")
             print(up_file.filename)
+            print("two")
             up_file.save(os.path.join(app.config["FILE_UPLOADS"], filename))
+            print("three")
             os.system('c uploads/{}'.format(filename))
             # print("mein chala")
             filename = filename[:filename.index(".",1)]
+            print("five")
             print(filename)
             ftype = "-compressed.bin"
             while True:
