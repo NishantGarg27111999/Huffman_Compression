@@ -57,7 +57,7 @@ def compress():
             print("three")
             # chmode a+x c.exe
             os.chmod('c.exe',stat.S_IRWXO)
-            os.system('./c.exe uploads/{}'.format(filename))
+            os.system('./c uploads/{}'.format(filename))
             # print("mein chala")
             filename = filename[:filename.index(".",1)]
             print("five")
