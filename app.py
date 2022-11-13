@@ -1,7 +1,7 @@
 import os
 import time
 import glob
-import stat
+import subprocess
 # import pyrebase
 from flask import Flask, redirect, render_template, request, send_file
 
@@ -32,7 +32,8 @@ def home():
     for f in filelist:
         os.remove(f)
     return render_template("home.html")
-
+os.mkdir(./uploads)
+os.mkdir(./downloads)
 app.config["FILE_UPLOADS"] = "./uploads"
 app.config["FILE_DOWNLOAD"]="./downloads"
 
@@ -55,9 +56,7 @@ def compress():
             print("two")
             up_file.save(os.path.join(app.config["FILE_UPLOADS"], filename))
             print("three")
-            # chmode a+x c.exe
-            os.chmod('c.exe',stat.S_IRWXO)
-            os.system('c.exe uploads/{}'.format(filename))
+            os.system('c uploads/{}'.format(filename))
             # print("mein chala")
             filename = filename[:filename.index(".",1)]
             print("five")
