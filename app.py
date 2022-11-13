@@ -32,8 +32,8 @@ def home():
     for f in filelist:
         os.remove(f)
     return render_template("home.html")
-os.mkdir(./uploads)
-os.mkdir(./downloads)
+os.mkdir("uploads")
+os.mkdir("downloads")
 app.config["FILE_UPLOADS"] = "./uploads"
 app.config["FILE_DOWNLOAD"]="./downloads"
 
