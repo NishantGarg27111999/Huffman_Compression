@@ -1,7 +1,18 @@
 import os
 import time
 import glob
+# import pyrebase
 from flask import Flask, redirect, render_template, request, send_file
+
+# config = {
+#   "apiKey": "AIzaSyBV2eQoH3G1zigz3IOvUy2P8d8aIJKjBXc",
+#   "authDomain": "huffman-48023.firebaseapp.com",
+#   "projectId": "huffman-48023",
+#   "storageBucket": "huffman-48023.appspot.com",
+#   "serviceAccount":"serviceAccountKey.json"
+# }
+# firebase_storage=pyrebase.initialize_app(config)
+# storage=firebase_storage.storage()
 
 # Configure Application
 app = Flask(__name__)
@@ -31,7 +42,7 @@ def compress():
 
     else:
         up_file = request.files["file"]
-
+        storage.child(up_file).put(up_file.filename)
         if len(up_file.filename) > 0:
             global filename
             global ftype
@@ -39,7 +50,7 @@ def compress():
             print(up_file.filename)
             up_file.save(os.path.join(app.config["FILE_UPLOADS"], filename))
             os.system('c uploads/{}'.format(filename))
-            print("mein chala")
+            # print("mein chala")
             filename = filename[:filename.index(".",1)]
             print(filename)
             ftype = "-compressed.bin"
@@ -78,7 +89,6 @@ def decompress():
             print(ftype)
             while True:
                 if 'uploads/{}-decompressed.txt':
-                    print("decompress mein hun main")
                     os.system('move uploads\{}-decompressed.txt downloads'.format(filename))
                     break
 
@@ -109,3 +119,5 @@ def download_file():
 # Restart application whenever changes are made
 if __name__ == "__main__":
     app.run(debug = True)
+    from waitress import serve
+    serve(app, host="0.0.0.0", port=8080)
