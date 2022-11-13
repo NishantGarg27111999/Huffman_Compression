@@ -42,7 +42,7 @@ def compress():
 
     else:
         up_file = request.files["file"]
-        storage.child(up_file).put(up_file.filename)
+        # storage.child(up_file).put(up_file.filename)
         if len(up_file.filename) > 0:
             global filename
             global ftype
