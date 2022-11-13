@@ -33,6 +33,7 @@ def home():
     return render_template("home.html")
 
 app.config["FILE_UPLOADS"] = "./uploads"
+app.config["FILE_DOWNLOAD"]="./downloads"
 
 @app.route("/compress", methods=["GET", "POST"])
 def compress():
@@ -115,7 +116,7 @@ def download_file():
     global ftype
     print(filename)
     print(ftype)
-    path = "downloads/" + filename + ftype
+    path = "./downloads/" + filename + ftype
     return send_file(path, as_attachment=True)
 
 
