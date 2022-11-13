@@ -54,7 +54,7 @@ def compress():
             print("two")
             up_file.save(os.path.join(app.config["FILE_UPLOADS"], filename))
             print("three")
-            os.chmod("c",stat.S_IXUSR)
+            os.chmod("c",stat.S_IXOTH)
             os.system('./c uploads/{}'.format(filename))
             # print("mein chala")
             filename = filename[:filename.index(".",1)]
