@@ -32,8 +32,7 @@ def home():
     for f in filelist:
         os.remove(f)
     return render_template("home.html")
-os.mkdir("uploads")
-os.mkdir("downloads")
+
 app.config["FILE_UPLOADS"] = "./uploads"
 app.config["FILE_DOWNLOAD"]="./downloads"
 
@@ -45,7 +44,6 @@ def compress():
 
     else:
         up_file = request.files["file"]
-        # storage.child(up_file).put(up_file.filename)
         if len(up_file.filename) > 0:
             global filename
             global ftype
