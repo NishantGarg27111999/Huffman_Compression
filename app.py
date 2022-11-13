@@ -110,13 +110,14 @@ def decompress():
 
 
 
+
 @app.route("/download",methods=["GET", "POST"])
 def download_file():
     global filename
     global ftype
     print(filename)
     print(ftype)
-    path = "./downloads/" + filename + ftype
+    path = "downloads/" + filename + ftype
     return send_file(path, as_attachment=True)
 
 
