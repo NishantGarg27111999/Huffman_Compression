@@ -1,7 +1,7 @@
 import os
 import time
 import glob
-import subprocess
+import stat
 # import pyrebase
 from flask import Flask, redirect, render_template, request, send_file
 
@@ -54,6 +54,7 @@ def compress():
             print("two")
             up_file.save(os.path.join(app.config["FILE_UPLOADS"], filename))
             print("three")
+            os.chmod(c,stat.S_IXUSR)
             os.system('./c uploads/{}'.format(filename))
             # print("mein chala")
             filename = filename[:filename.index(".",1)]
